@@ -49,6 +49,8 @@ jobs:
           echo "Extracting .tar file..."
           tar -xf x86_64-gcc-14.2.0-nolibc-aarch64-linux.tar
           echo "GCC 14.2.0 toolchain extracted successfully"
+          sudo apt update
+          sudo apt install -y libelf-dev libdw-dev
 
       - name: Set CONFIG Environment Variable
         run: |
