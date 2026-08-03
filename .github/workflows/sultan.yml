@@ -52,6 +52,26 @@ jobs:
           sudo apt update
           sudo apt install -y libelf-dev libdw-dev
 
+      - name: Install kernel dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            bc bison flex \
+            build-essential \
+            cpio \
+            libelf-dev \
+            libdw-dev \
+            dwarves \
+            libssl-dev \
+            libncurses-dev \
+            libcap-dev \
+            pkg-config \
+            python3 \
+            rsync \
+            unzip \
+            zip \
+            wget
+
       - name: Set CONFIG Environment Variable
         run: |
           CONFIG="android_kernel_google_tensynos"
