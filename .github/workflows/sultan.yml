@@ -69,10 +69,17 @@ jobs:
           git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
           git clone https://github.com/TheWildJames/kernel_patches.git
           git clone https://github.com/kerneltoast/android_kernel_google_tensynos
+          cd android_kernel_google_tensynos
+          git checkout fa1d6308d1fe803c3fdebcd3ee6f7a1155fc3462
+          cd ..
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           cd susfs4ksu
           git checkout ef16cbce5c5195988b9b630de85466148cbbcdef
+
+      - name: Copy zuma defconfig
+        run: |
+          cp zuma_defconfig android_kernel_google_tensynos/arch/arm64/configs/zuma_defconfig
 
       - name: Add KernelSU
         if: contains(matrix.features, 'wksu')
